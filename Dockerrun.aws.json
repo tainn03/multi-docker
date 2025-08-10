@@ -1,0 +1,55 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "tann0308/multi-client-up",
+            "hostName": "client",
+            "essential": false,
+            "memory": 512,
+            "portMappings": [
+                {
+                    "hostPort": 3000,
+                    "containerPort": 3000
+                }
+            ]
+        },
+        {
+            "name": "server",
+            "image": "tann0308/multi-server-up",
+            "hostName": "api",
+            "essential": false,
+            "memory": 512,
+            "portMappings": [
+                {
+                    "hostPort": 5000,
+                    "containerPort": 5000
+                }
+            ]
+        },
+        {
+            "name": "worker",
+            "image": "tann0308/multi-worker-up",
+            "hostName": "worker",
+            "essential": false,
+            "memory": 256
+        },
+        {
+            "name": "nginx",
+            "image": "tann0308/multi-nginx-up",
+            "hostName": "nginx",
+            "essential": true,
+            "memory": 256,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "client",
+                "server"
+            ]
+        }
+    ]
+}
