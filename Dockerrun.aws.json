@@ -1,12 +1,12 @@
 {
-    "AWSEBDockerrunVersion": 2,
+    "AWSEBDockerrunVersion": 1,
     "containerDefinitions": [
         {
             "name": "client",
             "image": "tann0308/multi-client-up",
             "hostName": "client",
             "essential": false,
-            "memory": 512,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 3000,
@@ -19,7 +19,7 @@
             "image": "tann0308/multi-server-up",
             "hostName": "api",
             "essential": false,
-            "memory": 512,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 5000,
@@ -32,14 +32,14 @@
             "image": "tann0308/multi-worker-up",
             "hostName": "worker",
             "essential": false,
-            "memory": 256
+            "memory": 128
         },
         {
             "name": "nginx",
             "image": "tann0308/multi-nginx-up",
             "hostName": "nginx",
             "essential": true,
-            "memory": 256,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
